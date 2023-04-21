@@ -38,4 +38,6 @@ RUN ls /home/node/app
 
 USER node
 
+EXPOSE 8080/tcp
+
 CMD ["npm", "run", "start:prod"]
