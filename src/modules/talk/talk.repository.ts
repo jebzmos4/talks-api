@@ -43,8 +43,4 @@ export class TalkRepository {
       .findOneAndUpdate(filter, { $set: data }, { new: true })
       .exec();
   }
-
-  public remove(query: FilterQuery<TalkDocument>) {
-    return this.talkModel.deleteOne(query).exec();
-  }
 }
