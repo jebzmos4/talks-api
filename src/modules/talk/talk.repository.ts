@@ -44,7 +44,7 @@ export class TalkRepository {
       .exec();
   }
 
-  public delete(query: FilterQuery<TalkDocument>) {
+  public remove(query: FilterQuery<TalkDocument>) {
     return this.talkModel.deleteOne(query).exec();
   }
 }
