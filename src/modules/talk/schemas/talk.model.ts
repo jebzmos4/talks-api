@@ -14,6 +14,9 @@ export class Talk {
 
   @Prop({ type: String })
   attendeeId: string;
+
+  @Prop({ type: Boolean, default: false })
+  removed: boolean = false;
 }
 
 export const TalkSchema = SchemaFactory.createForClass(Talk);

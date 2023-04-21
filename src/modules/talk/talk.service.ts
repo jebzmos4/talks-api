@@ -22,12 +22,16 @@ export class TalkService {
     return this.talkRepository.findAll();
   }
 
+  findAllActiveTalks(): Promise<Array<TalkDocument>> {
+    return this.talkRepository.find({ removed: false });
+  }
+
   findOne(id: string): Promise<TalkDocument> {
     return this.talkRepository.fetchById(id);
   }
 
-  remove(id: string): Promise<any> {
-    return this.talkRepository.remove({ id })
+  removeTalk(id: string): Promise<any> {
+    return this.talkRepository.updateOne({ id }, { removed: true })
   }
 
   async addAttendee(data: AddAttendeeDto): Promise<TalkDocument> {

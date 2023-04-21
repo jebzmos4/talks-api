@@ -13,8 +13,8 @@ export class TalkController {
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return this.talkService.remove(id);
+  async removeTalk(@Param('id') id: string) {
+    return this.talkService.removeTalk(id);
   }
 
   @Get(':id')
@@ -25,6 +25,11 @@ export class TalkController {
   @Get()
   async findAll() {
     return this.talkService.findAll();
+  }
+
+  @Get('/active')
+  async findAllActiveTalks() {
+    return this.talkService.findAllActiveTalks();
   }
 
   @Post('/attendee')
