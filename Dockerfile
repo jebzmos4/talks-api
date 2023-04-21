@@ -27,7 +27,7 @@ ENV NODE_ENV=production
 ENV LOG_LEVEL=info
 ENV SERVICE_PREFIX=/
 ENV PORT=3000
-ENV MONGODB_URL='mongodb://localhost/neotarra'
+ENV MONGODB_URL='mongodb+srv://jebzmos4:7LnZuSqXZqYD40Px@cluster0.mehuwh3.mongodb.net/test'
 
 WORKDIR /home/node/app
 
