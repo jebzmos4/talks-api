@@ -27,7 +27,7 @@ export class TalkService {
   }
 
   remove(id: string): Promise<any> {
-    return this.talkRepository.deleteOne({ id })
+    return this.talkRepository.delete({ id })
   }
 
   async addAttendee(data: AddAttendeeDto): Promise<TalkDocument> {
