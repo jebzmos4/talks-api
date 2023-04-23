@@ -17,6 +17,11 @@ export class TalkController {
     return this.talkService.removeTalk(id);
   }
 
+  @Get('/active')
+  async findAllActiveTalks() {
+    return this.talkService.findAllActiveTalks();
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.talkService.findOne(id);
@@ -27,14 +32,8 @@ export class TalkController {
     return this.talkService.findAll();
   }
 
-  @Get('/active')
-  async findAllActiveTalks() {
-    return this.talkService.findAllActiveTalks();
-  }
-
   @Post('/attendee')
   async addAttendee(@Body() addAttendee: AddAttendeeDto) {
-    await this.talkService.addAttendee(addAttendee);
-    return { message: 'Attendee as been added to the talk' };
+    return this.talkService.addAttendee(addAttendee);
   }
 }

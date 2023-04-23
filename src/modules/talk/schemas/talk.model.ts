@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from "mongoose";
+import { ObjectId } from "mongodb";
 
 @Schema()
 export class Talk {
@@ -12,8 +13,8 @@ export class Talk {
   @Prop({ type: String, required: true, unique: true })
   meetingLink!: string;
 
-  @Prop({ type: String })
-  attendeeId: string;
+  @Prop({ type: Array<string> })
+  attendees: string[] = [];
 
   @Prop({ type: Boolean, default: false })
   removed: boolean = false;

@@ -12,7 +12,7 @@ export class TalkRepository {
   public create(
     talk
   ): Promise<TalkDocument> {
-    return this.talkModel.create(talk);
+    return this.talkModel.create({...talk, attendees: []});
   }
 
   public fetchById(id: string): Promise<TalkDocument | null> {
@@ -32,7 +32,7 @@ export class TalkRepository {
   }
 
   public find(filter: FilterQuery<TalkDocument>): Promise<Array<TalkDocument> | null> {
-    return this.talkModel.find(filter).exec();
+    return this.talkModel.find(filter).populate('attendees', 'name gender email').exec();
   }
 
   public updateOne(
@@ -42,5 +42,11 @@ export class TalkRepository {
     return this.talkModel
       .findOneAndUpdate(filter, { $set: data }, { new: true })
       .exec();
+  }
+
+  public findOneAndRemove(
+    filter: FilterQuery<TalkDocument>,
+  ): Promise<TalkDocument | null> {
+    return this.talkModel.findOneAndRemove(filter, { new: true }).exec();
   }
 }
